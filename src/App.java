@@ -247,4 +247,33 @@ public class App {
 
         return i + 1;
     }
+
+    public static void binarySearch(int[] nums, int target) {
+        // Variables requeridas para el control
+        int n = nums.length;
+        int pivot = (n / 2) - 1;
+        int minLimit = 0;
+        int maxLimit = n - 1;
+
+        // El ciclo se usa para seguir reduciendo el espacio de búsqueda
+        while (nums[pivot] != target) {
+            // Se ajustan los límites según la comparación
+            if (nums[pivot] > target) {
+                maxLimit = pivot - 1;
+            } else {
+                minLimit = pivot + 1;
+            }
+            // Si los limetes se cruzan, el elemento no está
+            if (minLimit > maxLimit) {
+                System.out.println("Element not found");
+            }
+
+            // Se redefine el pivote en base a los limetes actualizados
+            pivot = (maxLimit + minLimit) / 2;
+        }
+
+        System.out.println("Element found at index: " + pivot);
+
+    }
+
 }
